@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0d2318">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>GuardZille Warranty</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dark:   #0d2318;
+  --deep:   #132b1e;
+  --mid:    #1a4a2e;
+  --bright: #2d9e52;
+  --light:  #3dbf64;
+  --gold:   #c9a227;
+  --goldlt: #e8c547;
+  --white:  #eef3ef;
+  --muted:  #7a9882;
+  --card:   #172f22;
+  --border: #243d2e;
+  --input:  #0f2219;
+  --r:      14px;
+  --rsm:    9px;
+  --touch:  48px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { font-size:15px; -webkit-text-size-adjust:100%; }
+
+body {
+  background:var(--dark);
+  color:var(--white);
+  font-family:'DM Sans',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  padding-bottom:70px;
+}
+
+/* HEADER */
+.hdr {
+  position:sticky; top:0; z-index:100;
+  background:var(--mid);
+  border-bottom:2px solid var(--gold);
+  padding:0 16px; height:56px;
+  display:flex; align-items:center; gap:12px;
+  box-shadow:0 2px 16px rgba(0,0,0,0.4);
+}
+.hlogo {
+  width:36px; height:36px; flex-shrink:0;
+  background:linear-gradient(135deg,var(--bright),var(--light));
+  border-radius:8px;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Rajdhani',sans-serif; font-weight:700; font-size:15px;
+  border:1px solid rgba(201,162,39,0.35);
+}
+.htitle { font-family:'Rajdhani',sans-serif; font-size:19px; font-weight:700; letter-spacing:1.5px; }
+.hsub   { font-size:10px; color:var(--gold); letter-spacing:0.5px; text-transform:uppercase; }
+.htech  {
+  margin-left:auto;
+  display:flex; align-items:center; gap:7px;
+  background:var(--input); border:1px solid var(--border);
+  border-radius:20px; padding:6px 12px;
+  font-size:12px; color:var(--muted);
+  cursor:pointer; max-width:130px;
+  touch-action:manipulation;
+}
+.htech span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.dot {
+  width:7px; height:7px; border-radius:50%;
+  background:var(--bright); flex-shrink:0;
+  animation:blink 2s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+/* SCREENS */
+.screen { display:none; }
+.screen.active { display:block; animation:fadeUp .2s ease; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+.page { padding:16px 16px 100px; max-width:480px; margin:0 auto; }
+
+/* CARDS */
+.card { background:var(--card); border:1px solid var(--border); border-radius:var(--r); margin-bottom:14px; overflow:hidden; }
+.card-head {
+  background:linear-gradient(135deg,var(--mid),var(--deep));
+  padding:13px 16px; display:flex; align-items:center; gap:10px;
+  border-bottom:1px solid var(--border);
+}
+.card-icon {
+  width:34px; height:34px; flex-shrink:0;
+  background:rgba(201,162,39,0.12); border:1px solid rgba(201,162,39,0.25);
+  border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:16px;
+}
+.card-head h2 { font-family:'Rajdhani',sans-serif; font-size:16px; font-weight:700; letter-spacing:0.5px; }
+.card-head p  { font-size:11px; color:var(--muted); margin-top:1px; }
+.card-body { padding:16px; }
+
+/* TECH LIST */
+.tech-list { display:flex; flex-direction:column; gap:10px; }
+.tech-row {
+  display:flex; align-items:center; gap:12px;
+  background:var(--input); border:1.5px solid var(--border);
+  border-radius:var(--rsm); padding:13px 14px;
+  cursor:pointer; min-height:var(--touch);
+  touch-action:manipulation;
+  transition:border-color .15s, background .15s;
+}
+.tech-row:active { background:rgba(45,158,82,0.08); }
+.tech-row.sel { border-color:var(--bright); background:rgba(45,158,82,0.1); }
+.tech-av {
+  width:40px; height:40px; flex-shrink:0; border-radius:50%;
+  background:linear-gradient(135deg,var(--bright),var(--light));
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Rajdhani',sans-serif; font-weight:700; font-size:15px;
+}
+.tech-info h3 { font-size:14px; font-weight:600; }
+.tech-info p  { font-size:11px; color:var(--muted); margin-top:1px; }
+.tech-chk {
+  margin-left:auto; width:22px; height:22px;
+  border-radius:50%; border:2px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  font-size:11px; flex-shrink:0; transition:all .15s;
+}
+.tech-row.sel .tech-chk { background:var(--bright); border-color:var(--bright); }
+
+/* TECH STRIP */
+.tstrip {
+  display:flex; align-items:center; gap:12px;
+  background:linear-gradient(135deg,var(--mid),var(--deep));
+  border:1px solid var(--border); border-radius:var(--r);
+  padding:12px 14px; margin-bottom:14px;
+}
+.tsav {
+  width:38px; height:38px; flex-shrink:0; border-radius:50%;
+  background:linear-gradient(135deg,var(--bright),var(--light));
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Rajdhani',sans-serif; font-weight:700; font-size:14px;
+  border:2px solid rgba(201,162,39,0.3);
+}
+.tsinfo h3 { font-size:14px; font-weight:600; }
+.tsinfo p  { font-size:11px; color:var(--gold); }
+.tscert { margin-left:auto; text-align:right; font-family:'Rajdhani',sans-serif; font-size:11px; color:var(--muted); }
+.tscert span { display:block; font-size:14px; font-weight:700; color:var(--white); }
+
+/* CAMERA */
+.camwrap { position:relative; background:#000; width:100%; aspect-ratio:4/3; overflow:hidden; }
+#video { width:100%; height:100%; object-fit:cover; display:none; }
+.camph {
+  width:100%; aspect-ratio:4/3;
+  background:var(--input);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:10px; color:var(--muted); padding:20px; text-align:center;
+}
+.camph .ci { font-size:44px; opacity:.35; }
+.camph p { font-size:13px; line-height:1.6; }
+.scanov { position:absolute; inset:0; display:none; align-items:center; justify-content:center; pointer-events:none; }
+.scanbox {
+  width:78%; aspect-ratio:1.7;
+  border:2px solid var(--gold); border-radius:8px;
+  position:relative;
+  box-shadow:0 0 0 9999px rgba(0,0,0,0.5);
+}
+.scanbox::before {
+  content:''; position:absolute; left:-2px; right:-2px; height:2px;
+  background:linear-gradient(to right,transparent,var(--goldlt),transparent);
+  animation:scanline 1.8s linear infinite;
+}
+@keyframes scanline { 0%{top:0} 100%{top:calc(100% + 2px)} }
+.sc { position:absolute; width:16px; height:16px; border-color:var(--goldlt); border-style:solid; }
+.sc.tl { top:-2px; left:-2px;  border-width:3px 0 0 3px; }
+.sc.tr { top:-2px; right:-2px; border-width:3px 3px 0 0; }
+.sc.bl { bottom:-2px; left:-2px;  border-width:0 0 3px 3px; }
+.sc.br { bottom:-2px; right:-2px; border-width:0 3px 3px 0; }
+.scanhint { position:absolute; bottom:-26px; left:50%; transform:translateX(-50%); font-size:10px; color:var(--gold); letter-spacing:1px; text-transform:uppercase; white-space:nowrap; }
+.camstt { padding:10px 14px; background:rgba(45,158,82,0.06); border-top:1px solid var(--border); font-size:12px; color:var(--muted); display:none; align-items:center; gap:8px; }
+.camstt.show { display:flex; }
+.cambtns { display:flex; gap:10px; padding:12px 14px; }
+
+/* DEBUG PANEL */
+.dbg { background:#0a1a0f; border:1px solid #1a3d20; border-radius:var(--rsm); margin-bottom:14px; overflow:hidden; }
+.dbg-head { background:#0f2415; padding:10px 14px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #1a3d20; }
+.dbg-head h3 { font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; color:var(--bright); text-transform:uppercase; }
+.dbg-badge { background:rgba(45,158,82,0.15); border:1px solid rgba(45,158,82,0.3); border-radius:4px; padding:2px 8px; font-size:10px; color:var(--bright); font-weight:700; }
+.dbg-body { padding:12px 14px; }
+.dbg-raw { background:#060f09; border:1px solid #1a3d20; border-radius:6px; padding:12px; font-family:monospace; font-size:11px; color:#5dde80; line-height:1.7; word-break:break-all; white-space:pre-wrap; max-height:180px; overflow-y:auto; margin-bottom:10px; }
+.dbg-fields { display:flex; flex-direction:column; gap:6px; }
+.dfrow { display:flex; gap:8px; align-items:baseline; padding:5px 0; border-bottom:1px solid #1a3d20; font-size:12px; }
+.dfrow:last-child { border-bottom:none; }
+.dfkey { color:var(--muted); min-width:90px; flex-shrink:0; font-size:11px; text-transform:uppercase; }
+.dfval { color:var(--white); font-weight:500; font-family:monospace; }
+.dfval.found { color:var(--bright); }
+.dfval.miss  { color:#555; font-style:italic; }
+.copybtn, .sendbtn {
+  display:flex; align-items:center; justify-content:center; gap:6px;
+  width:100%; padding:9px; border-radius:var(--rsm);
+  font-size:12px; font-weight:600; cursor:pointer;
+  touch-action:manipulation; border:none;
+  margin-top:8px;
+}
+.copybtn { background:rgba(45,158,82,0.1); border:1px solid rgba(45,158,82,0.25); color:var(--bright); }
+.sendbtn { background:rgba(201,162,39,0.1); border:1px solid rgba(201,162,39,0.25); color:var(--gold); }
+
+/* FORM */
+.fgrid { display:flex; flex-direction:column; gap:12px; }
+.frow  { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.fg    { display:flex; flex-direction:column; gap:5px; }
+.fg label { font-size:10px; font-weight:600; color:var(--muted); letter-spacing:0.8px; text-transform:uppercase; }
+.fg input, .fg select {
+  background:var(--input); border:1.5px solid var(--border);
+  border-radius:var(--rsm); padding:0 13px; height:var(--touch);
+  color:var(--white); font-family:'DM Sans',sans-serif; font-size:14px;
+  transition:border-color .15s; width:100%; -webkit-appearance:none;
+}
+.fg input:focus, .fg select:focus { outline:none; border-color:var(--bright); }
+.fg input.auto { border-color:rgba(45,158,82,0.5); color:var(--light); }
+.fg select option { background:var(--input); }
+.autotag {
+  display:inline-flex; align-items:center; gap:5px;
+  background:rgba(45,158,82,0.12); border:1px solid rgba(45,158,82,0.25);
+  border-radius:4px; padding:4px 9px; font-size:10px; color:var(--bright);
+  font-weight:700; letter-spacing:0.5px; margin-bottom:12px;
+}
+
+/* SERVICES */
+.svclist { display:flex; flex-direction:column; gap:8px; }
+.svcitem {
+  display:flex; align-items:center; gap:12px;
+  background:var(--input); border:1.5px solid var(--border);
+  border-radius:var(--rsm); padding:13px 14px;
+  cursor:pointer; min-height:var(--touch);
+  touch-action:manipulation; transition:all .15s;
+}
+.svcitem:active { opacity:.8; }
+.svcitem.on { border-color:rgba(45,158,82,0.5); background:rgba(45,158,82,0.07); }
+.svcchk {
+  width:20px; height:20px; border-radius:4px;
+  border:2px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  font-size:10px; flex-shrink:0; transition:all .15s;
+}
+.svcitem.on .svcchk { background:var(--bright); border-color:var(--bright); color:#fff; }
+.svcitem span { font-size:13px; font-weight:500; line-height:1.3; }
+
+/* BUTTONS */
+.btn {
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  min-height:var(--touch); border-radius:var(--rsm);
+  font-family:'Rajdhani',sans-serif; font-size:16px; font-weight:700;
+  letter-spacing:1px; text-transform:uppercase;
+  cursor:pointer; border:none; transition:all .15s;
+  padding:0 16px; touch-action:manipulation;
+  text-decoration:none; flex:1;
+}
+.btn:active { transform:scale(.97); }
+.btn-green { background:linear-gradient(135deg,var(--mid),var(--bright)); color:#fff; box-shadow:0 3px 12px rgba(45,158,82,0.25); }
+.btn-gold  { background:linear-gradient(135deg,#9a7415,var(--gold)); color:var(--dark); box-shadow:0 3px 12px rgba(201,162,39,0.2); }
+.btn-ghost { background:transparent; color:var(--muted); border:1.5px solid var(--border); }
+.btn-full  { width:100%; flex:none; }
+.btnrow    { display:flex; gap:10px; }
+
+/* STATUS */
+.statusbar { display:flex; align-items:center; gap:10px; padding:11px 14px; border-radius:var(--rsm); margin-bottom:12px; font-size:13px; }
+.statusbar.info { background:rgba(45,158,82,0.08); border:1px solid rgba(45,158,82,0.2); }
+.statusbar.warn { background:rgba(201,162,39,0.08); border:1px solid rgba(201,162,39,0.2); color:var(--gold); }
+
+/* SUCCESS */
+.suchero {
+  text-align:center; background:var(--card); border:1px solid var(--border);
+  border-radius:var(--r); padding:28px 16px 20px; margin-bottom:14px; position:relative; overflow:hidden;
+}
+.suchero::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(to right,var(--bright),var(--gold),var(--bright)); }
+.suicon { width:64px; height:64px; border-radius:50%; background:rgba(45,158,82,0.12); border:2px solid var(--bright); display:flex; align-items:center; justify-content:center; font-size:28px; margin:0 auto 14px; animation:pop .4s cubic-bezier(.34,1.56,.64,1); }
+@keyframes pop { from{transform:scale(0);opacity:0} to{transform:scale(1);opacity:1} }
+.suchero h2 { font-family:'Rajdhani',sans-serif; font-size:24px; font-weight:700; letter-spacing:1px; margin-bottom:6px; }
+.suchero p  { font-size:13px; color:var(--muted); line-height:1.5; }
+.sumrow { display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid var(--border); font-size:13px; }
+.sumrow:last-child { border-bottom:none; }
+.sumrow .k { color:var(--muted); }
+.sumrow .v { font-weight:600; }
+.gold  { color:var(--gold); font-family:'Rajdhani',sans-serif; font-size:15px; }
+.green { color:var(--bright); }
+
+/* HISTORY */
+.histitem { display:flex; align-items:center; gap:12px; background:var(--card); border:1px solid var(--border); border-radius:var(--rsm); padding:13px 14px; margin-bottom:10px; }
+.histic   { width:36px; height:36px; background:rgba(45,158,82,.12); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+.histinfo h4 { font-size:13px; font-weight:600; }
+.histinfo p  { font-size:11px; color:var(--muted); margin-top:2px; }
+.histcert    { font-family:'Rajdhani',sans-serif; font-size:12px; color:var(--gold); }
+
+/* BOTTOM NAV */
+.bnav {
+  position:fixed; bottom:0; left:0; right:0; z-index:200;
+  background:var(--card); border-top:1px solid var(--border);
+  display:flex;
+}
+.nbtn {
+  flex:1; border:none; background:none; cursor:pointer;
+  padding:10px 8px 8px;
+  display:flex; flex-direction:column; align-items:center; gap:3px;
+  color:var(--muted); font-size:10px; letter-spacing:0.3px;
+  transition:color .15s; touch-action:manipulation;
+}
+.nbtn.on { color:var(--bright); }
+.ni { font-size:20px; }
+
+/* LOADER */
+.loader { position:fixed; inset:0; z-index:500; background:rgba(13,35,24,0.92); display:none; flex-direction:column; align-items:center; justify-content:center; gap:16px; pointer-events:none; }
+.loader.show { display:flex; pointer-events:all; }
+.spin { width:44px; height:44px; border:3px solid var(--border); border-top-color:var(--bright); border-radius:50%; animation:spin .7s linear infinite; }
+@keyframes spin { to{transform:rotate(360deg)} }
+.loader p { font-family:'Rajdhani',sans-serif; font-size:15px; letter-spacing:1px; color:var(--muted); }
+
+/* TOAST */
+.toast {
+  position:fixed; bottom:72px; left:50%;
+  transform:translateX(-50%) translateY(10px);
+  background:var(--mid); color:#fff; padding:11px 20px;
+  border-radius:22px; font-size:13px; font-weight:500;
+  opacity:0; transition:all .25s; z-index:400;
+  white-space:nowrap; pointer-events:none;
+  box-shadow:0 4px 16px rgba(0,0,0,0.3);
+  max-width:90vw; text-align:center;
+}
+.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* SECTION LABEL */
+.slabel {
+  font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:2px; color:var(--gold); text-transform:uppercase;
+  margin-bottom:12px; display:flex; align-items:center; gap:8px;
+}
+.slabel::after { content:''; flex:1; height:1px; background:linear-gradient(to right,var(--border),transparent); }
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hlogo">GZ</div>
+  <div>
+    <div class="htitle">GUARDZILLE</div>
+    <div class="hsub">Warranty System</div>
+  </div>
+  <div class="htech" onclick="navTo('login')">
+    <div class="dot"></div>
+    <span id="hTechName">Select Tech</span>
+  </div>
+</header>
+
+<!-- LOGIN SCREEN -->
+<div class="screen active" id="sc-login">
+  <div class="page">
+    <div class="statusbar info">Select your profile to begin</div>
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon">👤</div>
+        <div><h2>Technician Profile</h2><p>Select who is performing the service</p></div>
+      </div>
+      <div class="card-body">
+        <div class="tech-list" id="techList">
+          <div class="tech-row" id="row_T001" onclick="pickTech('T001')">
+            <div class="tech-av">MS</div>
+            <div class="tech-info"><h3>Mandis Shumana</h3><p>Senior Technician - Mobile</p></div>
+            <div class="tech-chk" id="chk_T001"></div>
+          </div>
+          <div class="tech-row" id="row_T002" onclick="pickTech('T002')">
+            <div class="tech-av">AK</div>
+            <div class="tech-info"><h3>Andile Kumkeni</h3><p>Junior Technician - Mobile</p></div>
+            <div class="tech-chk" id="chk_T002"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-green btn-full" onclick="confirmTech()">Continue to Scanner</button>
+  </div>
+</div>
+
+<!-- SCAN SCREEN -->
+<div class="screen" id="sc-scan">
+  <div class="page">
+    <div class="tstrip" id="stripScan"></div>
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon">📷</div>
+        <div><h2>Scan License Disc</h2><p>Point at the PDF417 barcode</p></div>
+      </div>
+      <div class="camwrap">
+        <div class="camph" id="camPh">
+          <div class="ci">📋</div>
+          <p>Tap <strong>Start Camera</strong> and point at the barcode on the license disc</p>
+        </div>
+        <video id="video" autoplay muted playsinline></video>
+        <canvas id="canvas" style="display:none;"></canvas>
+        <div class="scanov" id="scanOv">
+          <div class="scanbox">
+            <div class="sc tl"></div><div class="sc tr"></div>
+            <div class="sc bl"></div><div class="sc br"></div>
+            <div class="scanhint">Hold steady over barcode</div>
+          </div>
+        </div>
+      </div>
+      <div class="camstt" id="scanStt">
+        <span id="scanIcon">🔍</span>
+        <span id="scanTxt">Scanning...</span>
+      </div>
+      <div class="cambtns">
+        <button class="btn btn-green" id="btnCam" onclick="toggleCam()">📷  Start Camera</button>
+        <button class="btn btn-ghost" onclick="goManual()">Manual Entry</button>
+      </div>
+    </div>
+    <div class="dbg" id="dbgPanel" style="display:none;">
+      <div class="dbg-head">
+        <h3>Debug - Raw Barcode Data</h3>
+        <span class="dbg-badge">DEV MODE</span>
+      </div>
+      <div class="dbg-body">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">Raw data from the license disc barcode. Copy and share so we can refine the parser.</p>
+        <div class="dbg-raw" id="rawData">No scan yet</div>
+        <div class="slabel" style="margin-top:14px;">Extracted Fields</div>
+        <div class="dbg-fields" id="dbgFields"></div>
+        <button class="copybtn" onclick="copyRaw()">Copy Raw Data</button>
+        <button class="sendbtn" onclick="shareRaw()">Share via WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FORM SCREEN -->
+<div class="screen" id="sc-form">
+  <div class="page">
+    <div class="tstrip" id="stripForm"></div>
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon">🚗</div>
+        <div><h2>Vehicle Information</h2></div>
+      </div>
+      <div class="card-body">
+        <div class="autotag" id="autoTag" style="display:none;">Auto-populated from scan</div>
+        <div class="fgrid">
+          <div class="fg">
+            <label>Registration Number *</label>
+            <input id="fReg" type="text" placeholder="e.g. CA 123 456" style="text-transform:uppercase;">
+          </div>
+          <div class="frow">
+            <div class="fg"><label>Make *</label><input id="fMake" type="text" placeholder="Toyota"></div>
+            <div class="fg"><label>Model *</label><input id="fModel" type="text" placeholder="Corolla"></div>
+          </div>
+          <div class="frow">
+            <div class="fg"><label>Year</label><input id="fYear" type="text" placeholder="2020" inputmode="numeric"></div>
+            <div class="fg"><label>Colour</label><input id="fColour" type="text" placeholder="White"></div>
+          </div>
+          <div class="fg"><label>VIN (optional)</label><input id="fVin" type="text" placeholder="17-char VIN"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon">👤</div>
+        <div><h2>Customer Information</h2></div>
+      </div>
+      <div class="card-body">
+        <div class="fgrid">
+          <div class="fg"><label>Customer Name *</label><input id="fName" type="text" placeholder="Full name"></div>
+          <div class="fg"><label>Contact Number *</label><input id="fPhone" type="tel" placeholder="e.g. 082 000 0000" inputmode="tel"></div>
+          <div class="fg">
+            <label>Service Location *</label>
+            <select id="fLoc">
+              <option value="">Select location...</option>
+              <option>Cape Town - Mobile Unit 1</option>
+              <option>Cape Town - Mobile Unit 2</option>
+              <option>Cape Town - HQ</option>
+              <option>Johannesburg</option>
+              <option>Durban</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon">🔧</div>
+        <div><h2>Services Performed</h2></div>
+      </div>
+      <div class="card-body">
+        <div class="svclist" id="svcList"></div>
+      </div>
+    </div>
+    <button class="btn btn-gold btn-full" onclick="generate()" style="margin-bottom:10px;">Generate Warranty Certificate</button>
+    <button class="btn btn-ghost btn-full" onclick="navTo('scan')">Back to Scanner</button>
+  </div>
+</div>
+
+<!-- SUCCESS SCREEN -->
+<div class="screen" id="sc-success">
+  <div class="page">
+    <div class="suchero">
+      <div class="suicon">✅</div>
+      <h2>Certificate Generated!</h2>
+      <p>Saved to Google Drive as PDF.</p>
+      <div id="sumTable" style="margin-top:16px;"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <a id="btnOpenPDF" href="#" target="_blank" class="btn btn-green btn-full" style="text-decoration:none;">Open / Download PDF</a>
+      <a id="btnWhatsApp" href="#" target="_blank" class="btn btn-gold btn-full" style="text-decoration:none;">Share via WhatsApp</a>
+      <div class="btnrow">
+        <a href="https://drive.google.com" target="_blank" class="btn btn-ghost" style="text-decoration:none;flex:1;">Google Drive</a>
+        <button class="btn btn-ghost" onclick="newCert()" style="flex:1;">New Cert</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HISTORY SCREEN -->
+<div class="screen" id="sc-history">
+  <div class="page">
+    <div class="slabel">Recent Certificates</div>
+    <div id="histList"></div>
+    <p id="histEmpty" style="color:var(--muted);font-size:14px;text-align:center;padding:32px 0;display:none;">No certificates yet</p>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bnav">
+  <button class="nbtn on" id="nb-scan"    onclick="navTo('scan')">    <span class="ni">📷</span>Scan</button>
+  <button class="nbtn"    id="nb-form"    onclick="navTo('form')">    <span class="ni">📋</span>Form</button>
+  <button class="nbtn"    id="nb-history" onclick="navTo('history')"> <span class="ni">📁</span>History</button>
+  <button class="nbtn"    id="nb-login"   onclick="navTo('login')">   <span class="ni">👤</span>Profile</button>
+</nav>
+
+<div class="loader" id="loader"><div class="spin"></div><p id="loaderTxt">Processing...</p></div>
+<div class="toast" id="toast"></div>
+
+<script>
+// CONFIG - replace https://script.google.com/macros/s/AKfycbz3TKcJAKkAVNVaI1YQZAiCRWU0Q81goowunoFM8oHAJUky5gzUwdEqsIUKSI3pK7zb/exec with your actual Google Apps Script URL
+var GAS_URL        = 'https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbz3TKcJAKkAVNVaI1YQZAiCRWU0Q81goowunoFM8oHAJUky5gzUwdEqsIUKSI3pK7zb/exec/exec';
+var WARRANTY_YEARS = 3;
+var CERT_PREFIX    = 'GZ';
+var DEBUG_MODE     = true;
+
+// TECHNICIANS
+var TECHS = [
+  { id:'T001', name:'Mandisi Shumana', role:'Senior Technician', ini:'MS', location:'Mobile' },
+  { id:'T002', name:'Andile Kumkeni', role:'Junior Technician', ini:'AK', location:'Mobile' }
+];
+
+// SERVICES
+var SVCS = [
+  { id:'restore', label:'3-Step Headlight Restoration',     on:true  },
+  { id:'polish',  label:'Precision Machine Polishing',       on:true  },
+  { id:'uv',      label:'UV Protective Coating Application', on:true  },
+  { id:'sealant', label:'Hydrophobic Sealant Treatment',     on:false },
+  { id:'tint',    label:'Tint Removal',                      on:false },
+  { id:'scratch', label:'Light Scratch Removal',             on:false }
+];
+
+// STATE
+var state = {
+  tech:       null,
+  rawBarcode: '',
+  parsed:     {},
+  cert:       null,
+  history:    [],
+  camOn:      false,
+  stream:     null,
+  scanTimer:  null
+};
+
+// Load history from storage
+try { state.history = JSON.parse(localStorage.getItem('gz_hist') || '[]'); } catch(e) {}
+
+// Clear old cached data when app version changes
+var APP_VER = '3.0';
+try {
+  if (localStorage.getItem('gz_ver') !== APP_VER) {
+    localStorage.clear();
+    localStorage.setItem('gz_ver', APP_VER);
+  }
+} catch(e) {}
+
+// NAVIGATION
+function showScreen(name) {
+  var screens = document.querySelectorAll('.screen');
+  for (var i = 0; i < screens.length; i++) {
+    screens[i].classList.remove('active');
+  }
+  var el = document.getElementById('sc-' + name);
+  if (el) el.classList.add('active');
+}
+
+function setNav(name) {
+  var btns = document.querySelectorAll('.nbtn');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.remove('on');
+  }
+  var nb = document.getElementById('nb-' + name);
+  if (nb) nb.classList.add('on');
+}
+
+function navTo(name) {
+  if (name === 'login')   { showScreen('login');   setNav('login');   return; }
+  if (name === 'history') { renderHistory(); showScreen('history'); setNav('history'); return; }
+  if (!state.tech && name !== 'login') { toast('Please select a technician first'); showScreen('login'); setNav('login'); return; }
+  if (name === 'scan') { buildStrip('stripScan'); stopCam(); }
+  if (name === 'form') { buildStrip('stripForm'); }
+  showScreen(name);
+  setNav(name);
+}
+
+function goManual() { stopCam(); navTo('form'); }
+
+// TECH SELECTION
+function pickTech(id) {
+  var t = null;
+  for (var i = 0; i < TECHS.length; i++) {
+    if (TECHS[i].id === id) { t = TECHS[i]; break; }
+  }
+  if (!t) return;
+  state.tech = t;
+
+  // Update visual state of all rows
+  for (var j = 0; j < TECHS.length; j++) {
+    var row = document.getElementById('row_' + TECHS[j].id);
+    var chk = document.getElementById('chk_' + TECHS[j].id);
+    if (row) row.classList.remove('sel');
+    if (chk) chk.textContent = '';
+  }
+  var selRow = document.getElementById('row_' + id);
+  var selChk = document.getElementById('chk_' + id);
+  if (selRow) selRow.classList.add('sel');
+  if (selChk) selChk.textContent = 'v';
+}
+
+function confirmTech() {
+  if (!state.tech) { toast('Please select a technician'); return; }
+  try { localStorage.setItem('gz_tech', state.tech.id); } catch(e) {}
+  document.getElementById('hTechName').textContent = state.tech.name.split(' ')[0];
+  buildStrip('stripScan');
+  navTo('scan');
+}
+
+function buildStrip(id) {
+  var el = document.getElementById(id);
+  if (!el || !state.tech) return;
+  var cn = (state.cert && state.cert.number) ? state.cert.number : makeCertNum();
+  el.innerHTML =
+    '<div class="tsav">' + state.tech.ini + '</div>' +
+    '<div class="tsinfo"><h3>' + state.tech.name + '</h3><p>' + state.tech.role + '</p></div>' +
+    '<div class="tscert"><span>' + cn + '</span>Certificate</div>';
+}
+
+// SERVICES
+function buildSvcList() {
+  var html = '';
+  for (var i = 0; i < SVCS.length; i++) {
+    var s = SVCS[i];
+    html += '<div class="svcitem ' + (s.on ? 'on' : '') + '" id="s_' + s.id + '" onclick="toggleSvc(\'' + s.id + '\')">' +
+      '<div class="svcchk">' + (s.on ? 'v' : '') + '</div>' +
+      '<span>' + s.label + '</span></div>';
+  }
+  document.getElementById('svcList').innerHTML = html;
+}
+
+function toggleSvc(id) {
+  var el = document.getElementById('s_' + id);
+  var chk = el.querySelector('.svcchk');
+  var on = el.classList.toggle('on');
+  chk.textContent = on ? 'v' : '';
+}
+
+function getSelSvcs() {
+  var result = [];
+  for (var i = 0; i < SVCS.length; i++) {
+    var el = document.getElementById('s_' + SVCS[i].id);
+    if (el && el.classList.contains('on')) result.push(SVCS[i].label);
+  }
+  return result;
+}
+
+// CAMERA
+function toggleCam() {
+  if (state.camOn) stopCam(); else startCam();
+}
+
+function startCam() {
+  navigator.mediaDevices.getUserMedia({ video:{ facingMode:{ ideal:'environment' }, width:{ ideal:1280 } } })
+    .then(function(stream) {
+      state.stream = stream;
+      state.camOn  = true;
+      var v = document.getElementById('video');
+      v.srcObject = stream;
+      v.style.display = 'block';
+      document.getElementById('camPh').style.display   = 'none';
+      document.getElementById('scanOv').style.display  = 'flex';
+      document.getElementById('scanStt').classList.add('show');
+      document.getElementById('scanTxt').textContent   = 'Scanning for barcode...';
+      document.getElementById('btnCam').innerHTML      = 'Stop Camera';
+      state.scanTimer = setInterval(doScanFrame, 600);
+    })
+    .catch(function() {
+      toast('Camera access denied - use Manual Entry');
+    });
+}
+
+function stopCam() {
+  if (state.stream) { state.stream.getTracks().forEach(function(t){ t.stop(); }); state.stream = null; }
+  state.camOn = false;
+  clearInterval(state.scanTimer);
+  var v   = document.getElementById('video');
+  var ph  = document.getElementById('camPh');
+  var ov  = document.getElementById('scanOv');
+  var stt = document.getElementById('scanStt');
+  var btn = document.getElementById('btnCam');
+  if (v)   { v.style.display = 'none'; v.srcObject = null; }
+  if (ph)  ph.style.display  = 'flex';
+  if (ov)  ov.style.display  = 'none';
+  if (stt) stt.classList.remove('show');
+  if (btn) btn.innerHTML = 'Start Camera';
+}
+
+function doScanFrame() {
+  var v = document.getElementById('video');
+  var c = document.getElementById('canvas');
+  if (!v || v.readyState < 2) return;
+  c.width  = v.videoWidth;
+  c.height = v.videoHeight;
+  c.getContext('2d').drawImage(v, 0, 0);
+
+  if (!('BarcodeDetector' in window)) {
+    document.getElementById('scanTxt').textContent = 'BarcodeDetector not supported - use Manual Entry';
+    return;
+  }
+
+  var bd = new BarcodeDetector({ formats:['pdf417','code_128','code_39','qr_code','data_matrix'] });
+  bd.detect(c).then(function(codes) {
+    if (!codes.length) return;
+    document.getElementById('scanIcon').textContent = 'OK';
+    document.getElementById('scanTxt').textContent  = 'Barcode detected!';
+    stopCam();
+    handleBarcode(codes[0].rawValue);
+  }).catch(function(){});
+}
+
+// BARCODE PARSING
+function handleBarcode(raw) {
+  state.rawBarcode = raw;
+  var parsed = parseBarcode(raw);
+  state.parsed = parsed;
+  if (DEBUG_MODE) showDebug(raw, parsed);
+  populateForm(parsed);
+  toast('Barcode scanned!');
+  setTimeout(function(){ navTo('form'); }, 600);
+}
+
+function parseBarcode(raw) {
+  var out = { reg:'', make:'', model:'', year:'', vin:'', colour:'', owner:'', bodyType:'', licenceExpiry:'' };
+  if (!raw) return out;
+
+  // SA eNaTIS percent-delimited format (confirmed format)
+  if (raw.indexOf('%') !== -1) {
+    var parts = raw.split('%');
+    // Positions: 7=REG, 8=BODY TYPE, 9=MAKE, 10=MODEL, 11=COLOUR, 12=VIN, 14=EXPIRY
+    var get = function(i) { return (parts[i] || '').trim(); };
+    if (get(7))  out.reg          = get(7).toUpperCase();
+    if (get(8))  out.bodyType     = get(8).split('/')[0].trim();
+    if (get(9))  out.make         = get(9);
+    if (get(10)) out.model        = get(10);
+    if (get(11)) out.colour       = get(11).split('/')[0].trim();
+    if (get(12) && get(12).length === 17) out.vin = get(12);
+    if (get(14)) out.licenceExpiry = get(14);
+    if (out.vin) out.year = vinYear(out.vin);
+    if (!out.year) {
+      var yrm = raw.match(/\b(19[6-9]\d|20[0-3]\d)\b/);
+      if (yrm) out.year = yrm[0];
+    }
+    return out;
+  }
+
+  // Fallback: pipe-delimited
+  if (raw.indexOf('|') !== -1) {
+    var p = raw.split('|');
+    out.reg   = (p[0] || '').trim().toUpperCase();
+    out.make  = (p[1] || '').trim();
+    out.model = (p[2] || '').trim();
+    if (/^\d{4}$/.test((p[3]||'').trim())) out.year = p[3].trim();
+    if ((p[4]||'').trim().length === 17) out.vin = p[4].trim();
+    return out;
+  }
+
+  // Last resort: regex
+  var vm = raw.match(/[A-HJ-NPR-Z0-9]{17}/);
+  if (vm) { out.vin = vm[0]; out.year = vinYear(vm[0]); }
+  var ym = raw.match(/\b(19[6-9]\d|20[0-3]\d)\b/);
+  if (ym && !out.year) out.year = ym[0];
+  return out;
+}
+
+function vinYear(vin) {
+  if (!vin || vin.length !== 17) return '';
+  var map = {
+    'A':'1980','B':'1981','C':'1982','D':'1983','E':'1984','F':'1985','G':'1986','H':'1987',
+    'J':'1988','K':'1989','L':'1990','M':'1991','N':'1992','P':'1993','R':'1994','S':'1995',
+    'T':'1996','V':'1997','W':'1998','X':'1999','Y':'2000',
+    '1':'2001','2':'2002','3':'2003','4':'2004','5':'2005','6':'2006','7':'2007','8':'2008','9':'2009'
+  };
+  return map[vin[9]] || '';
+}
+
+function showDebug(raw, p) {
+  document.getElementById('dbgPanel').style.display = 'block';
+  document.getElementById('rawData').textContent = raw || '(empty)';
+  var fields = [
+    { k:'Registration',   v:p.reg },
+    { k:'Make',           v:p.make },
+    { k:'Model',          v:p.model },
+    { k:'Year',           v:p.year },
+    { k:'Colour',         v:p.colour },
+    { k:'Body Type',      v:p.bodyType },
+    { k:'VIN',            v:p.vin },
+    { k:'Lic Expiry',     v:p.licenceExpiry }
+  ];
+  var html = '';
+  for (var i = 0; i < fields.length; i++) {
+    var f = fields[i];
+    html += '<div class="dfrow"><span class="dfkey">' + f.k + '</span><span class="dfval ' + (f.v ? 'found' : 'miss') + '">' + (f.v || '-- not found') + '</span></div>';
+  }
+  document.getElementById('dbgFields').innerHTML = html;
+}
+
+function populateForm(p) {
+  function setVal(id, val) {
+    var el = document.getElementById(id);
+    if (!el || !val) return;
+    el.value = val;
+    el.classList.add('auto');
+  }
+  setVal('fReg',    p.reg);
+  setVal('fMake',   p.make);
+  setVal('fModel',  p.model);
+  setVal('fYear',   p.year);
+  setVal('fVin',    p.vin);
+  setVal('fColour', p.colour);
+  setVal('fName',   p.owner);
+  var any = p.reg || p.make || p.model || p.year || p.vin;
+  document.getElementById('autoTag').style.display = any ? 'inline-flex' : 'none';
+}
+
+function copyRaw() {
+  var raw = state.rawBarcode;
+  if (!raw) { toast('No barcode data yet'); return; }
+  var txt = 'GuardZille Barcode Debug\nRaw: ' + raw + '\nLength: ' + raw.length;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(txt).then(function(){ toast('Copied to clipboard!'); }).catch(function(){
+      fallbackCopy(txt);
+    });
+  } else { fallbackCopy(txt); }
+}
+
+function fallbackCopy(txt) {
+  var ta = document.createElement('textarea');
+  ta.value = txt; document.body.appendChild(ta); ta.select();
+  document.execCommand('copy'); document.body.removeChild(ta);
+  toast('Copied!');
+}
+
+function shareRaw() {
+  var raw = state.rawBarcode || '';
+  var txt = encodeURIComponent('GuardZille barcode debug:\nRaw: ' + raw + '\nLength: ' + raw.length);
+  window.open('https://wa.me/?text=' + txt, '_blank');
+}
+
+// GENERATE CERTIFICATE
+function getForm() {
+  return {
+    reg:    document.getElementById('fReg').value.trim().toUpperCase(),
+    make:   document.getElementById('fMake').value.trim(),
+    model:  document.getElementById('fModel').value.trim(),
+    year:   document.getElementById('fYear').value.trim(),
+    colour: document.getElementById('fColour').value.trim(),
+    vin:    document.getElementById('fVin').value.trim(),
+    name:   document.getElementById('fName').value.trim(),
+    phone:  document.getElementById('fPhone').value.trim(),
+    loc:    document.getElementById('fLoc').value,
+    svcs:   getSelSvcs()
+  };
+}
+
+function generate() {
+  var f = getForm();
+  if (!f.reg)   { toast('Registration number required'); return; }
+  if (!f.make)  { toast('Vehicle make required'); return; }
+  if (!f.model) { toast('Vehicle model required'); return; }
+  if (!f.name)  { toast('Customer name required'); return; }
+  if (!f.phone) { toast('Contact number required'); return; }
+  if (!f.loc)   { toast('Service location required'); return; }
+  if (!f.svcs.length) { toast('Select at least one service'); return; }
+
+  var now    = new Date();
+  var expiry = new Date(now);
+  expiry.setFullYear(expiry.getFullYear() + WARRANTY_YEARS);
+
+  var data = {
+    certNumber:     makeCertNum(),
+    customerName:   f.name,
+    contactNumber:  f.phone,
+    regNumber:      f.reg,
+    make:           f.make,
+    model:          f.model,
+    year:           f.year,
+    colour:         f.colour,
+    vin:            f.vin,
+    location:       f.loc,
+    services:       f.svcs,
+    serviceDate:    fmtDate(now),
+    expiryDate:     fmtDate(expiry),
+    vehicle:        [f.year, f.make, f.model].filter(Boolean).join(' '),
+    technicianId:   state.tech.id,
+    technicianName: state.tech.name,
+    technicianRole: state.tech.role,
+    timestamp:      now.toISOString()
+  };
+
+  state.cert = { number: data.certNumber, data: data };
+  saveHist(data);
+
+  // Build GAS URL with encoded certificate data
+  var payload  = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+  var gasUrl   = GAS_URL + '?action=generateCertificate&data=' + encodeURIComponent(payload);
+  data.gasUrl  = gasUrl;
+  state.cert.data = data;
+
+  showSuccess(data);
+}
+
+function showSuccess(d) {
+  var rows = [
+    ['Certificate No.', '<span class="gold">' + d.certNumber + '</span>'],
+    ['Customer',        d.customerName],
+    ['Vehicle',         d.vehicle],
+    ['Registration',    d.regNumber],
+    ['Service Date',    d.serviceDate],
+    ['Warranty Expires','<span class="green">' + d.expiryDate + '</span>'],
+    ['Technician',      d.technicianName]
+  ];
+  var html = '';
+  for (var i = 0; i < rows.length; i++) {
+    html += '<div class="sumrow"><span class="k">' + rows[i][0] + '</span><span class="v">' + rows[i][1] + '</span></div>';
+  }
+  document.getElementById('sumTable').innerHTML = html;
+
+  // Set PDF link
+  var pdfBtn = document.getElementById('btnOpenPDF');
+  if (pdfBtn && d.gasUrl) pdfBtn.href = d.gasUrl;
+
+  // Set WhatsApp link
+  var waMsg = 'GuardZille Warranty Certificate\n' +
+    '--------------------\n' +
+    'Certificate: ' + d.certNumber + '\n' +
+    'Customer: '    + d.customerName + '\n' +
+    'Vehicle: '     + d.vehicle + '\n' +
+    'Registration: '+ d.regNumber + '\n' +
+    'Date: '        + d.serviceDate + '\n' +
+    'Valid Until: ' + d.expiryDate + '\n' +
+    'Technician: '  + d.technicianName + '\n' +
+    '--------------------\n' +
+    'GuardZille - Built to Protect\n' +
+    '084 637 9426 | Cape Town';
+  var waBtn = document.getElementById('btnWhatsApp');
+  if (waBtn) waBtn.href = 'https://wa.me/?text=' + encodeURIComponent(waMsg);
+
+  showScreen('success');
+  var btns = document.querySelectorAll('.nbtn');
+  for (var j = 0; j < btns.length; j++) btns[j].classList.remove('on');
+}
+
+function newCert() {
+  var fields = ['fReg','fMake','fModel','fYear','fColour','fVin','fName','fPhone'];
+  for (var i = 0; i < fields.length; i++) {
+    var el = document.getElementById(fields[i]);
+    if (el) { el.value = ''; el.classList.remove('auto'); }
+  }
+  document.getElementById('fLoc').value = '';
+  document.getElementById('autoTag').style.display = 'none';
+  document.getElementById('dbgPanel').style.display = 'none';
+  buildSvcList();
+  state.parsed = {};
+  state.rawBarcode = '';
+  state.cert = null;
+  navTo('scan');
+}
+
+// HISTORY
+function saveHist(d) {
+  state.history.push({
+    certNumber:   d.certNumber,
+    customerName: d.customerName,
+    regNumber:    d.regNumber,
+    vehicle:      d.vehicle,
+    date:         d.serviceDate
+  });
+  if (state.history.length > 50) state.history = state.history.slice(-50);
+  try { localStorage.setItem('gz_hist', JSON.stringify(state.history)); } catch(e) {}
+}
+
+function renderHistory() {
+  var list  = document.getElementById('histList');
+  var empty = document.getElementById('histEmpty');
+  if (!state.history.length) {
+    list.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  var arr  = state.history.slice().reverse();
+  var html = '';
+  for (var i = 0; i < arr.length; i++) {
+    var h = arr[i];
+    html += '<div class="histitem">' +
+      '<div class="histic">shield</div>' +
+      '<div class="histinfo"><h4>' + h.customerName + ' - ' + h.regNumber + '</h4>' +
+      '<p>' + h.vehicle + ' - ' + h.date + '</p>' +
+      '<div class="histcert">' + h.certNumber + '</div></div></div>';
+  }
+  list.innerHTML = html;
+}
+
+// UTILITIES
+function makeCertNum() {
+  var d = new Date();
+  var yy = String(d.getFullYear()).slice(2);
+  var mm = String(d.getMonth() + 1).padStart(2, '0');
+  var rr = String(Math.floor(Math.random() * 9000) + 1000);
+  return CERT_PREFIX + '-' + yy + mm + '-' + rr;
+}
+
+function fmtDate(d) {
+  return d.toLocaleDateString('en-ZA', { year:'numeric', month:'long', day:'numeric' });
+}
+
+function showLoader(t) {
+  document.getElementById('loaderTxt').textContent = t || 'Processing...';
+  document.getElementById('loader').classList.add('show');
+}
+
+function hideLoader() {
+  document.getElementById('loader').classList.remove('show');
+}
+
+function toast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 3000);
+}
+
+// BOOT
+function boot() {
+  buildSvcList();
+  renderHistory();
+
+  // Restore last technician if valid
+  try {
+    var lastId = localStorage.getItem('gz_tech');
+    if (lastId) {
+      for (var i = 0; i < TECHS.length; i++) {
+        if (TECHS[i].id === lastId) {
+          state.tech = TECHS[i];
+          document.getElementById('hTechName').textContent = state.tech.name.split(' ')[0];
+          pickTech(lastId);
+          break;
+        }
+      }
+    }
+  } catch(e) {}
+
+  showScreen('login');
+  setNav('login');
+}
+
+// Start
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', boot);
+} else {
+  boot();
+}
+</script>
+</body>
+</html>
